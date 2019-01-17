@@ -1,0 +1,5 @@
+basketball,Basket
+swimming,Michael Phelps
+tennis,Big racket
+table-tennis,Small orange ball
+football,Cristiano Ronaldo

@@ -1,0 +1,5 @@
+yakisoba,Japanese noodle
+tom-yum-kung,Thai famous soup
+pad-thai,Thai famous orange noodle
+salmon:sashimi,Japanese fish
+pizza@1112,Come from Italian
