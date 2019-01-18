@@ -10,11 +10,17 @@ Author : Sathira Kittisukmongkol
 
 ## How to run
 
+Use command line to run this project by typing these following commands :
+
 ```
 cd weather/
 javac -cp json-20180813.jar Main.java
 java -cp json-20180813.jar:. Main weather.xml
 ```
+
+## Author
+
+Sathira Kittisukmongkol
 
 ## References
 
