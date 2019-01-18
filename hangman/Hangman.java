@@ -23,10 +23,17 @@ public class Hangman {
 	private List<String> wrongGuessedList = new ArrayList<>();
 	private HashMap<String, List<Word>> vocabTable = new HashMap<>();
 
+	/*
+	 * The constructor of hangman game.
+	 * Start the game by read the words and hints from txt file.
+	 */
 	public Hangman() {
 		readDataFromText();
 	}
 
+	/*
+	 * Read the words and hints from txt file from the Word folder.
+	 */
 	private void readDataFromText() {
 		File location = new File("./Word/");
 		File[] listOfFiles = location.listFiles();
@@ -50,6 +57,10 @@ public class Hangman {
 		}
 	}
 
+	/*
+	 * Update all related values when user input some guess.
+	 * @param userInput , guess alphabet from the user.
+	 */
 	public void userGuess(String userInput) {
 		if(isAlphabet(userInput)) {
 			if(hasContain(randomWord.getWord(), userInput)) {
@@ -70,6 +81,9 @@ public class Hangman {
 		}
 	}
 
+	/*
+	 * Random some word to let user guess.
+	 */
 	public void randomSomeWord() {
 		int randomIndex = (int)Math.floor(Math.random() * vocabTable.get(userCategory).size());
 		randomWord = vocabTable.get(userCategory).get(randomIndex);
@@ -82,6 +96,12 @@ public class Hangman {
 		}
 	}
 
+	/*
+	 * Find all index of input alphabet.
+	 * @param word , the word which that wanted alphabet may be located in.
+	 * @param alphabet , the alphabet that want to find in the word.
+	 * @return result , the list of index of that alphabet in the word.
+	 */
 	private List<Integer> allIndexOf(String word, String alphabet) {
 		List<Integer> result = new ArrayList<>();
 		for(int i = 0 ; i < word.length() ; i++) {
@@ -92,6 +112,12 @@ public class Hangman {
 		return result;
 	}
 
+	/*
+	 * Check that alphabet contains in the word or not.
+	 * @param word , the word which that wanted alphabet may be located in.
+	 * @param alphabet , the alphabet that want to find in the word.
+	 * @return true/false.
+	 */
 	private boolean hasContain(String word, String alphabet) {
 		for(int i = 0 ; i < word.length() ; i++) {
 			if(word.charAt(i) == alphabet.charAt(0)) {
@@ -101,10 +127,18 @@ public class Hangman {
 		return false;
 	}
 
+	/*
+	 * Set the user choice.
+	 * @param choice , the user's selected choice.
+	 */
 	public void setUserCategory(String choice) {
 		userCategory = choice;
 	}
 
+	/*
+	 * Get all the key in the vocabTable.
+	 * @return vocabCategory , list of all the keys in the vocabTable.
+	 */
 	public List<String> getVocabCategory() {
 		List<String> vocabCategory = new ArrayList<>();
 		for(String str : vocabTable.keySet())
@@ -112,26 +146,51 @@ public class Hangman {
 		return vocabCategory;
 	}
 
+	/*
+	 * Get the present score.
+	 * @return score , present score.
+	 */
 	public int getScore() {
 		return score;
 	}
 
+	/*
+	 * Get the remain life.
+	 * @return remainLife , the number of remain life.
+	 */
 	public int getRemainLife() {
 		return remainLife;
 	}
 
+	/*
+	 * Get the hint of the random word.
+	 * @return the hint of the random word.
+	 */
 	public String getHint() {
 		return randomWord.getHint();
 	}
 
+	/*
+	 * Get the recently user's answers.
+	 * @return wordArrayAnswer , list of recently user's answers.
+	 */
 	public List<String> getAnswerArray() {
 		return wordArrayAnswer;
 	}
 
+	/*
+	 * Get the recently user's wrong answers.
+	 * @return wrongGuessedList , list of recently user's wrong answers.
+	 */
 	public List<String> getWrongGuessed() {
 		return wrongGuessedList;
 	}
 
+	/*
+	 * Check input is alphabet or not.
+	 * @param input , alphabet that want to check.
+	 * @return true/false.
+	 */
 	private boolean isAlphabet(String input) {
 		String[] alphabet = {"a", "b", "c", "d", "e",
 				"f", "g", "h", "i", "j", "k", "l", "m",
@@ -144,12 +203,20 @@ public class Hangman {
 		return false;
 	}
 
+	/*
+	 * Check that user win or not.
+	 * @return true/false.
+	 */
 	public boolean isUserWin() {
 		if(wordArrayAnswer.contains("_"))
 			return false;
 		return true;
 	}
 
+	/*
+	 * Check that game is end or not.
+	 * @return true/false.
+	 */
 	public boolean isEnd() {
 		if(!wordArrayAnswer.contains("_")) {
 			return true;
@@ -159,6 +226,10 @@ public class Hangman {
 		return false;
 	}
 
+	/*
+	 * Print the vocabTable.
+	 * See all the words with their hint in vocabTable.
+	 */
 	private void printTheVocabTable() {
 		int numKeyInTable = vocabTable.size();
 		String currentKey = "";

@@ -10,12 +10,21 @@ public class Console {
 	private Hangman game;
 	private Scanner input = new Scanner(System.in);
 
+	/*
+	 * The constructor of console.
+	 * Before user plays the game,
+	 * ask them for category and then start the game.
+	 * @param game , the hangman game object.
+	 */
 	public Console(Hangman game) {
 		this.game = game;
 		askCategory();
 		runConsole();
 	}
 
+	/*
+	 * Ask user for the category of the word.
+	 */
 	private void askCategory() {
 		List<String> category = game.getVocabCategory();
 		System.out.println("Select Category:");
@@ -37,6 +46,9 @@ public class Console {
 		}
 	}
 
+	/*
+	 * Start the game.
+	 */
 	private void runConsole() {
 		String userInput;
 		game.randomSomeWord();
@@ -51,6 +63,9 @@ public class Console {
 		System.out.println("Program ends ...");
 	}
 
+	/*
+	 * Show the dialog of the game.
+	 */
 	private void showDialog() {
 		for(String s : game.getAnswerArray())
 			System.out.print(s + " ");
@@ -64,6 +79,10 @@ public class Console {
 		System.out.println("");
 	}
 
+	/*
+	 * When the game is end,
+	 * user wins the game or not.
+	 */
 	private void showGameStatus() {
 		if(game.isUserWin())
 			System.out.println("You Win !!!");
